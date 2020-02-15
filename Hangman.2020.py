@@ -1,6 +1,7 @@
 #Pythonic Hangman
 
 import random
+#import string
 
 WORD_FILE = "wordlist.txt"
 
@@ -60,7 +61,7 @@ def hangman(masked_word):
     letters_guessed = list()
 
     print("Welcome to Hangman!\n")
-    print("You have 16 guesses.  Alphabetical Characters Only.\n Invalid Characters Cost one Turn")
+    print("You have 16 guesses.  Alphabetical Characters Only.\n Invalid Characters Cost One Turn")
     print("Begin! Your word is:",len(masked_word), "letters long:\n",get_guessed_word(masked_word, letters_guessed))
     print("\nAvailable Characters:", alphabet)
 
@@ -69,6 +70,7 @@ def hangman(masked_word):
     while(guesses>0):
 
         letter = input('Guess a Letter:  ')
+
         if letter not in alphabet:
             guesses -=1
             print("Available Characters Only!",alphabet)
@@ -77,7 +79,7 @@ def hangman(masked_word):
         else:
             if letter in letters_guessed:
                 guesses -=1
-                print("You've used this letter already!")
+                print("You've used this letter already!", get_guessed_word(masked_word, letters_guessed))
              
             else:
                 letters_guessed.append(letter)
